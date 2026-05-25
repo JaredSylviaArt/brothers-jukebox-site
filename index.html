@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brothers Jukebox — Website UI Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rye&family=Special+Elite&family=Big+Shoulders+Stencil+Display:wght@400;700;900&family=Bowlby+One+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.3/default/snipcart.css">
+  <style>
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: #e8dfc9;
+      color: #1a1612;
+      font-family: 'Special Elite', 'Courier Prime', monospace;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Grain overlay */
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9999;
+      opacity: 0.35; mix-blend-mode: multiply;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.07  0 0 0 0.55 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    }
+    /* Vignette */
+    body::after {
+      content: '';
+      position: fixed; inset: 0;
+      pointer-events: none; z-index: 9998;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(80,60,40,0.18) 100%);
+    }
+
+    /* ── TYPOGRAPHY ── */
+    h1, h2, h3, h4 { font-weight: normal; }
+    h1 {
+      font-family: 'Rye', serif;
+      font-size: clamp(48px, 11vw, 160px);
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: #1a1612;
+    }
+    h2 {
+      font-family: 'Rye', serif;
+      font-size: clamp(32px, 4.5vw, 56px);
+      line-height: 1.05;
+      text-transform: uppercase;
+    }
+    h3 {
+      font-family: 'Rye', serif;
+      font-size: clamp(22px, 3vw, 36px);
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    h4 {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    p { font-family: 'Special Elite', monospace; font-size: 15px; line-height: 1.85; letter-spacing: 0.04em; }
+    em { color: #a8362a; font-style: normal; }
+    a { color: inherit; text-decoration: none; }
+    strong { font-weight: bold; }
+
+    /* ── TICKER ── */
+    .bj-ticker {
+      background: #1a1612;
+      color: #e8dfc9;
+      overflow: hidden;
+      white-space: nowrap;
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      padding: 7px 0;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .bj-ticker-track { display: inline-block; animation: ticker-scroll 38s linear infinite; }
+    .bj-ticker-track span { padding: 0 18px; }
+    .bj-ticker-track .dot { color: #a8362a; padding: 0 6px; }
+    @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── NAV ── */
+    .bj-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+      border-bottom: 1px solid #1a1612;
+      background: #e8dfc9;
+      position: sticky;
+      top: 33px;
+      z-index: 99;
+    }
+    .bj-mark {
+      font-family: 'Bowlby One SC', sans-serif;
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      color: #1a1612;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    .bj-mark .star { color: #a8362a; font-size: 20px; vertical-align: -2px; margin-right: 4px; }
+    .bj-nav ul { list-style: none; display: flex; gap: 28px; }
+    .bj-nav a {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      font-size: 12px;
+      color: #1a1612;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.2s ease;
+      cursor: pointer;
+    }
+    .bj-nav a.active { color: #a8362a; border-bottom: 2px solid #a8362a; padding-bottom: 3px; }
+    .bj-nav a:hover { color: #a8362a; }
+    .bj-socials { display: flex; gap: 10px; }
+    .bj-socials a {
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bowlby One SC', sans-serif;
+      font-size: 10px;
+      color: #1a1612;
+      border: 1px solid #1a1612;
+      letter-spacing: 0;
+      transition: all 0.2s ease;
+    }
+    .bj-socials a:hover { background: #1a1612; color: #e8dfc9; }
+
+    /* ── BUTTONS ── */
+    .bj-btn {
+      display: inline-block;
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 900;
+      font-size: 14px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      padding: 12px 24px;
+      border: 1.5px solid #1a1612;
+      background: transparent;
+      color: #1a1612;
+    }
+    .bj-btn:hover { background: #1a1612; color: #e8dfc9; }
+    .bj-btn-rust { background: #a8362a; border-color: #a8362a; color: #e8dfc9; }
+    .bj-btn-rust:hover { background: #7a2419; border-color: #7a2419; }
+
+    /* ── HERO ── */
+    .bj-hero {
+      padding: 60px 48px 48px;
+      text-align: center;
+      border-bottom: 1px solid #1a1612;
+      position: relative;
+      overflow: hidden;
+    }
+    .bj-hero .stamp {
+      position: absolute;
+      font-family: 'Bowlby One SC', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: #7a2419;
+      border: 2px solid #7a2419;
+      padding: 6px 10px;
+      opacity: 0.75;
+      text-transform: uppercase;
+      line-height: 1.2;
+      text-align: center;
+    }
+    .bj-hero .stamp small { display: block; font-size: 9px; letter-spacing: 0.15em; margin-top: 2px; }
+    .stamp.tl { top: 32px; left: 32px; transform: rotate(-8deg); }
+    .stamp.tr { top: 36px; right: 36px; transform: rotate(6deg); }
+    .bj-kicker {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.38em;
+      font-size: 11px;
+      color: #2c2620;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+    .bj-kicker .sep { color: #a8362a; padding: 0 10px; }
+    h1[data-text] { display: inline-block; position: relative; }
+    h1[data-text]::before {
+      content: attr(data-text);
+      position: absolute; inset: 0;
+      color: #a8362a;
+      transform: translate(2px, 1px);
+      opacity: 0.22;
+      z-index: -1;
+      pointer-events: none;
+    }
+    h1[data-text]::after {
+      content: attr(data-text);
+      position: absolute; inset: 0;
+      color: #1a1612;
+      transform: translate(-1px, -1px);
+      opacity: 0.4;
+      z-index: -2;
+      pointer-events: none;
+    }
+    .bj-subhead {
+      font-family: 'Rye', serif;
+      font-size: clamp(16px, 2.5vw, 24px);
+      margin-top: 12px;
+      color: #1a1612;
+      text-transform: uppercase;
+    }
+    .bj-undertag {
+      font-family: 'Special Elite', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #2c2620;
+      max-width: 560px;
+      margin: 16px auto 0;
+      letter-spacing: 0.04em;
+    }
+    .bj-hero-ctas { display: flex; gap: 12px; justify-content: center; margin-top: 24px; flex-wrap: wrap; }
+    .bj-hero-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 28px;
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      color: #1a1612;
+      text-transform: uppercase;
+    }
+    .bj-hero-rule .line { flex: 1; max-width: 120px; height: 1px; background: #1a1612; }
+    .bj-hero-rule .star { color: #a8362a; }
+
+    /* ── SOCIAL PROOF BANNER ── */
+    .bj-proof {
+      background: #1a1612;
+      color: #e8dfc9;
+      padding: 48px;
+      text-align: center;
+      border-top: 1px solid #1a1612;
+    }
+    .bj-proof .stat {
+      font-family: 'Rye', serif;
+      font-size: clamp(22px, 3.5vw, 36px);
+      text-transform: uppercase;
+    }
+    .bj-proof .stat em { color: #a8362a; }
+    .bj-proof .infl {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      color: #d9ceb1;
+      margin-top: 16px;
+      text-transform: uppercase;
+    }
+    .bj-proof .infl .star { color: #a8362a; padding: 0 10px; }
+
+    /* ── PHOTO GALLERY ── */
+    .bj-gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      border-bottom: 1px solid #1a1612;
+    }
+    .bj-gallery .photo {
+      aspect-ratio: 4/3;
+      border: 1px solid #1a1612;
+      background: #d9ceb1;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 12px;
+    }
+    .bj-gallery .photo::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle, #1a1612 22%, transparent 23%) 0 0 / 8px 8px;
+      opacity: 0.12;
+    }
+    .bj-gallery .photo .caption {
+      font-family: 'Special Elite', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      color: #e8dfc9;
+      background: rgba(26,22,18,0.75);
+      padding: 4px 8px;
+      text-transform: uppercase;
+      position: relative; z-index: 1;
+    }
+    .bj-gallery .photo.big .big-cap {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Rye', serif;
+      font-size: clamp(16px, 2.2vw, 26px);
+      text-transform: uppercase;
+      color: #e8dfc9;
+      text-align: center;
+      line-height: 1.2;
+      z-index: 1;
+      opacity: 0.88;
+    }
+    .bj-gallery.past { grid-template-columns: repeat(3, 1fr); }
+    .bj-gallery.past .photo, .past-photo { aspect-ratio: 4/3; }
+
+    /* ── SECTION HEADER ── */
+    section { border-top: 1px solid #1a1612; }
+    section.bj-hero { border-top: none; }
+    .bj-section-head {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      padding: 32px 48px 28px;
+      border-bottom: 1px solid #1a1612;
+    }
+    .bj-section-head .num {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 900;
+      font-size: 56px;
+      color: #a8362a;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .bj-section-head h2 { flex: 1; }
+    .bj-section-head .meta {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: #6b5d4a;
+      text-align: right;
+      text-transform: uppercase;
+      line-height: 1.5;
+    }
+
+    /* ── SHOWS LIST ── */
+    .bj-shows-list { padding: 0 48px 48px; }
+    .show-row {
+      display: grid;
+      grid-template-columns: 44px 140px 1fr 120px;
+      gap: 20px;
+      align-items: center;
+      padding: 18px 0;
+      border-bottom: 1px dashed #6b5d4a;
+    }
+    .show-row .idx {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      color: #2c2620;
+    }
+    .show-row .date { font-family: 'Rye', serif; font-size: 22px; line-height: 1; color: #1a1612; }
+    .show-row .date small {
+      display: block;
+      font-family: 'Special Elite', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: #a8362a;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+    }
+    .show-row .venue {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #1a1612;
+      margin-bottom: 3px;
+    }
+    .show-row .city {
+      font-family: 'Special Elite', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: #2c2620;
+      text-transform: uppercase;
+    }
+    .show-row .ticket a {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: #1a1612;
+      border: 1px solid #1a1612;
+      padding: 8px 14px;
+      display: inline-block;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .show-row .ticket a:hover { background: #1a1612; color: #e8dfc9; }
+    .see-all { padding-top: 28px; text-align: center; }
+
+    /* ── MERCH TEASER / SECTION ── */
+    .bj-merch-teaser, .bj-merch-section { padding: 32px 48px 48px; }
+    .bj-teaser-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+    .teaser-card {
+      border: 1px solid #1a1612;
+      background: #f1ead5;
+      padding: 18px;
+      position: relative;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+    .teaser-card:hover { transform: translateY(-4px) rotate(-0.5deg); }
+    .teaser-card .new-tag {
+      position: absolute;
+      top: -9px; right: -9px;
+      background: #a8362a;
+      color: #e8dfc9;
+      font-family: 'Bowlby One SC', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      padding: 4px 10px;
+      transform: rotate(7deg);
+      text-transform: uppercase;
+    }
+    .teaser-card .product-img {
+      aspect-ratio: 1/1;
+      background: #e8dfc9;
+      border: 1px solid #1a1612;
+      margin-bottom: 12px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .teaser-card .product-img::before {
+      content: '';
+      position: absolute; inset: 15%;
+      background: radial-gradient(circle, #1a1612 22%, transparent 23%) 0 0 / 8px 8px;
+      opacity: 0.10;
+    }
+    .teaser-card .silhouette {
+      font-family: 'Rye', serif;
+      font-size: 36px;
+      color: #1a1612;
+      opacity: 0.45;
+      position: relative; z-index: 1;
+    }
+    .teaser-card h4 { margin-bottom: 4px; }
+    .teaser-card .price { font-family: 'Rye', serif; font-size: 18px; color: #a8362a; }
+    .teaser-card .prod-desc {
+      font-family: 'Special Elite', monospace;
+      font-size: 11px;
+      color: #6b5d4a;
+      letter-spacing: 0.04em;
+      margin-top: 6px;
+    }
+    .cta-wrap { margin-top: 28px; text-align: center; }
+
+    /* ── MARQUEE ── */
+    .bj-marquee {
+      background: #e8dfc9;
+      border-top: 1px solid #1a1612;
+      border-bottom: 1px solid #1a1612;
+      overflow: hidden; white-space: nowrap;
+      padding: 14px 0;
+    }
+    .bj-marquee-track { display: inline-block; animation: marquee-scroll 32s linear infinite; }
+    .bj-marquee-track span {
+      font-family: 'Special Elite', monospace;
+      font-size: 14px;
+      letter-spacing: 0.18em;
+      color: #2c2620;
+      padding: 0 24px;
+      text-transform: uppercase;
+    }
+    .bj-marquee-track .star { color: #a8362a; font-size: 10px; padding: 0 12px; }
+    @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ── VIDEO ── */
+    .bj-video-section { padding: 48px; }
+    .bj-video-frame {
+      max-width: 800px;
+      margin: 24px auto 0;
+      aspect-ratio: 16/9;
+      background: #1a1612;
+      border: 1px solid #1a1612;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .bj-video-frame .corner {
+      position: absolute;
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: #a8362a;
+      text-transform: uppercase;
+    }
+    .bj-video-frame .corner.tl { top: 14px; left: 16px; }
+    .bj-video-frame .corner.br { bottom: 14px; right: 16px; }
+    .bj-video-frame .play {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: 0.3em;
+      color: #e8dfc9;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+    .small-note {
+      text-align: center;
+      margin-top: 16px;
+      font-family: 'Special Elite', monospace;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: #6b5d4a;
+      text-transform: uppercase;
+    }
+
+    /* ── ABOUT: STORY ── */
+    .bj-story { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 48px; }
+    .story-text h3 { margin-bottom: 20px; }
+    .story-text p { margin-bottom: 16px; }
+    .story-stats ul { list-style: none; }
+    .story-stats ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px dashed #6b5d4a;
+      font-family: 'Special Elite', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .story-stats .check { color: #a8362a; flex-shrink: 0; margin-top: 2px; }
+
+    /* ── ABOUT: MEMBERS ── */
+    .bj-members { }
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: #1a1612;
+    }
+    .member-card { background: #e8dfc9; padding: 24px; }
+    .member-photo {
+      width: 100%; aspect-ratio: 3/4;
+      background: #d9ceb1;
+      border: 1px solid #1a1612;
+      margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      font-family: 'Rye', serif;
+      font-size: 56px; color: #1a1612; opacity: 0.32;
+    }
+    .member-photo::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle, #1a1612 22%, transparent 23%) 0 0 / 8px 8px;
+      opacity: 0.1;
+    }
+    .member-photo span { position: relative; z-index: 1; }
+    .member-info h4 { margin-bottom: 4px; }
+    .member-info .role {
+      font-family: 'Special Elite', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: #a8362a;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .member-info p { font-size: 12px; color: #2c2620; line-height: 1.7; }
+
+    /* ── ABOUT: SOUND ── */
+    .bj-sound { }
+    .sound-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; padding: 32px 48px 48px; }
+    .sound-text p { margin-bottom: 14px; }
+    .influence-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #1a1612; }
+    .influence-card { background: #f1ead5; padding: 18px; display: flex; flex-direction: column; gap: 4px; }
+    .influence-card strong {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 900; font-size: 16px;
+      letter-spacing: 0.05em; text-transform: uppercase; color: #1a1612;
+    }
+    .influence-card span { font-family: 'Special Elite', monospace; font-size: 12px; color: #6b5d4a; letter-spacing: 0.08em; }
+
+    /* ── MERCH: FEATURED ── */
+    .bj-featured-product {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-top: 1px solid #1a1612;
+      border-bottom: 1px solid #1a1612;
+    }
+    .feat-img {
+      background: #d9ceb1;
+      border-right: 1px solid #1a1612;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; min-height: 400px; overflow: hidden;
+    }
+    .feat-img::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(circle, #1a1612 22%, transparent 23%) 0 0 / 10px 10px;
+      opacity: 0.12;
+    }
+    .feat-silhouette {
+      font-family: 'Rye', serif; font-size: 120px;
+      color: #1a1612; opacity: 0.3;
+      position: relative; z-index: 1;
+    }
+    .feat-corner-tag {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      font-family: 'Special Elite', monospace;
+      font-size: 10px; letter-spacing: 0.12em; color: #6b5d4a;
+      text-transform: uppercase; white-space: nowrap;
+    }
+    .feat-info { padding: 40px; display: flex; flex-direction: column; }
+    .feat-info h2 { margin: 8px 0 16px; }
+    .feat-price { font-family: 'Rye', serif; font-size: 28px; color: #a8362a; margin-bottom: 16px; }
+    .feat-price span { font-family: 'Special Elite', monospace; font-size: 12px; color: #6b5d4a; letter-spacing: 0.1em; }
+    .feat-desc { font-size: 14px; color: #2c2620; margin-bottom: 24px; }
+    .size-label {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 0.25em; text-transform: uppercase; color: #6b5d4a; margin-bottom: 8px;
+    }
+    .size-selector { display: flex; gap: 8px; flex-wrap: wrap; }
+    .size-btn {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700; font-size: 13px;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      width: 40px; height: 40px;
+      border: 1px solid #1a1612;
+      background: transparent; color: #1a1612;
+      cursor: pointer; transition: all 0.2s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .size-btn:hover, .size-btn.active { background: #1a1612; color: #e8dfc9; }
+
+    /* ── MERCH: FILTERS ── */
+    .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
+    .filter-pill {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 7px 14px;
+      border: 1px solid #1a1612;
+      background: transparent; color: #1a1612;
+      cursor: pointer; transition: all 0.2s ease;
+    }
+    .filter-pill:hover, .filter-pill.active { background: #1a1612; color: #e8dfc9; }
+
+    /* ── SHOWS / BOOK: VENUE WISHLIST ── */
+    .venue-wishlist {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: #1a1612;
+      margin-top: 24px;
+    }
+    .venue-card { background: #f1ead5; padding: 24px; }
+    .venue-card h4 { margin-bottom: 8px; }
+    .venue-card p { font-size: 13px; color: #2c2620; }
+
+    /* ── BOOK: CREDENTIALS ── */
+    .creds-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: #1a1612;
+      margin: 0 48px 48px;
+    }
+    .cred-card { background: #f1ead5; padding: 28px 24px; }
+    .cred-num { font-family: 'Rye', serif; font-size: 36px; color: #a8362a; line-height: 1; margin-bottom: 2px; }
+    .cred-label {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 900; font-size: 18px;
+      letter-spacing: 0.06em; text-transform: uppercase; color: #1a1612; margin-bottom: 10px;
+    }
+    .cred-card p { font-size: 13px; color: #2c2620; line-height: 1.7; }
+
+    /* ── BOOK: FORM ── */
+    .bj-form-section { padding: 0 48px 48px; }
+    .form-layout { display: grid; grid-template-columns: 280px 1fr; gap: 48px; padding-top: 28px; }
+    .form-side p { margin-bottom: 16px; font-size: 14px; color: #2c2620; }
+    .form-contact { margin-top: 28px; padding: 16px; border: 1px solid #1a1612; }
+    .form-contact p { font-size: 13px; }
+    .bj-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
+    .field label {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 0.25em; text-transform: uppercase; color: #6b5d4a;
+    }
+    .field input, .field select, .field textarea {
+      font-family: 'Special Elite', monospace;
+      font-size: 14px; color: #1a1612;
+      background: transparent;
+      border: 1px solid #1a1612;
+      padding: 10px 12px;
+      outline: none;
+      transition: border-color 0.2s ease;
+      letter-spacing: 0.04em;
+      resize: vertical;
+    }
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: #a8362a; }
+    .field input::placeholder, .field textarea::placeholder { opacity: 0.45; }
+    .field select { appearance: none; cursor: pointer; background: #f1ead5; }
+    .form-success {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 60px 40px;
+      border: 1px solid #1a1612;
+      text-align: center; gap: 12px;
+    }
+    .success-star { font-size: 48px; color: #a8362a; }
+    .form-success h3 { font-size: 36px; }
+    .form-success p { font-size: 14px; color: #2c2620; max-width: 320px; }
+
+    /* ── FOOTER ── */
+    .bj-footer { border-top: 1px solid #1a1612; }
+    .bj-mailing {
+      background: #1a1612;
+      color: #e8dfc9;
+      padding: 64px 48px 56px;
+      text-align: center;
+      position: relative;
+    }
+    .bj-mailing::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 20px;
+      background: radial-gradient(circle, #e8dfc9 4px, transparent 5px) 12px 8px / 24px 16px;
+    }
+    .bj-mailing::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 20px;
+      background: radial-gradient(circle, #e8dfc9 4px, transparent 5px) 12px 0 / 24px 16px;
+    }
+    .bj-mailing h3 { color: #e8dfc9; font-size: clamp(22px, 3vw, 36px); margin-bottom: 12px; }
+    .bj-mailing h3 em { color: #a8362a; }
+    .bj-mailing p { color: #d9ceb1; font-size: 14px; margin-bottom: 24px; }
+    .bj-mailing form { display: flex; max-width: 480px; margin: 0 auto; }
+    .bj-mailing input {
+      flex: 1;
+      font-family: 'Special Elite', monospace; font-size: 13px;
+      background: transparent; border: 1px solid #d9ceb1;
+      color: #e8dfc9; padding: 12px 16px; outline: none;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .bj-mailing input::placeholder { opacity: 0.45; }
+    .bj-mailing input:focus { border-color: #a8362a; }
+    .bj-mailing button {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 900; font-size: 12px; letter-spacing: 0.22em; text-transform: uppercase;
+      background: #a8362a; color: #e8dfc9; border: 1px solid #a8362a;
+      padding: 12px 20px; cursor: pointer; transition: background 0.2s ease;
+    }
+    .bj-mailing button:hover { background: #7a2419; border-color: #7a2419; }
+    .bj-foot-inner {
+      background: #1a1612; color: #e8dfc9; padding: 48px;
+      border-top: 1px solid #2c2620;
+    }
+    .bj-foot-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 40px; padding-bottom: 36px; border-bottom: 1px solid #2c2620;
+    }
+    .bj-foot-mark {
+      font-family: 'Rye', serif; font-size: 36px;
+      line-height: 1; text-transform: uppercase; color: #e8dfc9;
+    }
+    .bj-foot-mark .star { color: #a8362a; }
+    .bj-foot-mark small {
+      display: block; font-family: 'Special Elite', monospace;
+      font-size: 11px; letter-spacing: 0.12em; color: #6b5d4a;
+      margin-top: 10px; text-transform: uppercase;
+    }
+    .bj-foot-socials { display: flex; gap: 8px; margin-top: 16px; }
+    .bj-foot-socials a {
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bowlby One SC', sans-serif; font-size: 9px;
+      color: #d9ceb1; border: 1px solid #2c2620; letter-spacing: 0;
+      transition: all 0.2s ease;
+    }
+    .bj-foot-socials a:hover { background: #a8362a; border-color: #a8362a; color: #e8dfc9; }
+    .bj-foot-col h4 {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700; font-size: 11px;
+      letter-spacing: 0.3em; text-transform: uppercase; color: #6b5d4a; margin-bottom: 14px;
+    }
+    .bj-foot-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .bj-foot-col a {
+      font-family: 'Special Elite', monospace; font-size: 13px;
+      letter-spacing: 0.06em; color: #d9ceb1; transition: color 0.2s ease;
+    }
+    .bj-foot-col a:hover { color: #a8362a; }
+    .bj-foot-bot {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 20px;
+      font-family: 'Special Elite', monospace; font-size: 11px;
+      letter-spacing: 0.1em; color: #6b5d4a; text-transform: uppercase;
+    }
+
+    /* ── LOGO ── */
+    .bj-logo { height: 44px; width: auto; display: block; }
+
+    /* ── PHOTOS ── */
+    .bj-gallery .photo { position: relative; overflow: hidden; }
+    .photo-img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .member-photo { position: relative; overflow: hidden; }
+    .member-photo-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      opacity: 1;
+    }
+
+    /* ── PAGE ANIMATION ── */
+    @keyframes page-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    main > div { animation: page-in 0.18s ease both; }
+    main { min-height: 100vh; }
+
+    /* ── CART BUTTON IN NAV ── */
+    .bj-nav-cart {
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid #1a1612;
+      color: #1a1612;
+      padding: 6px 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-left: 12px;
+    }
+    .bj-nav-cart:hover { background: #1a1612; color: #e8dfc9; }
+
+    /* ── SMALL ADD-TO-TABLE BUTTON ON PRODUCT GRID CARDS ── */
+    .btn-add-card {
+      display: block;
+      width: 100%;
+      margin-top: 10px;
+      font-family: 'Big Shoulders Stencil Display', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 8px;
+      border: 1px solid #1a1612;
+      background: transparent;
+      color: #1a1612;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-add-card:hover { background: #1a1612; color: #e8dfc9; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!-- Snipcart -->
+  <div hidden id="snipcart" data-api-key="YOUR_SNIPCART_PUBLIC_API_KEY" data-config-modal-style="side"></div>
+  <script async src="https://cdn.snipcart.com/themes/v3.7.3/default/snipcart.js"></script>
+
+  <!-- Hidden product catalog for Snipcart server-side crawler -->
+  <div id="snipcart-catalog" style="display:none">
+    <button
+      data-item-id="tour-tee-mmxxvi"
+      data-item-name="Tour Tee 'MMXXVI'"
+      data-item-price="28"
+      data-item-url="/"
+      data-item-description="Heavyweight cream cotton. Distressed print."
+      data-item-custom1-name="Size"
+      data-item-custom1-options="S|M|L|XL|2XL"
+      data-item-custom1-required="true"
+    ></button>
+    <button
+      data-item-id="trucker-hat"
+      data-item-name="Trucker Hat"
+      data-item-price="24"
+      data-item-url="/"
+      data-item-description="Foam front. Snapback. Compact logo."
+    ></button>
+    <button
+      data-item-id="cowboy-patch"
+      data-item-name="Cowboy Patch"
+      data-item-price="8"
+      data-item-url="/"
+      data-item-description="Iron-on. 3.5-inch embroidered."
+    ></button>
+    <button
+      data-item-id="tour-poster"
+      data-item-name="Tour Poster"
+      data-item-price="18"
+      data-item-url="/"
+      data-item-description="18×24. Screen-printed. Signed option."
+    ></button>
+    <button
+      data-item-id="long-sleeve-tee"
+      data-item-name="Long-Sleeve Tee"
+      data-item-price="34"
+      data-item-url="/"
+      data-item-description="Same distressed print. Winter ready."
+      data-item-custom1-name="Size"
+      data-item-custom1-options="S|M|L|XL|2XL"
+      data-item-custom1-required="true"
+    ></button>
+    <button
+      data-item-id="bandana"
+      data-item-name="Bandana"
+      data-item-price="12"
+      data-item-url="/"
+      data-item-description="100% cotton. Rust/ink colorway."
+    ></button>
+  </div>
+
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+        }
+      });
+    }
+  </script>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+
+  <script src="utils.js"></script>
+  <script src="Nav.js"></script>
+  <script src="Footer.js"></script>
+  <script src="HomePage.js"></script>
+  <script src="AboutPage.js"></script>
+  <script src="ShowsPage.js"></script>
+  <script src="MerchPage.js"></script>
+  <script src="BookPage.js"></script>
+
+  <script>
+    const App = () => {
+      const [page, setPage] = React.useState('Home');
+
+      const navigate = (dest) => {
+        setPage(dest);
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      };
+
+      const pageMap = {
+        Home:     () => React.createElement(HomePage,  { onNavigate: navigate }),
+        About:    () => React.createElement(AboutPage,  { onNavigate: navigate }),
+        Shows:    () => React.createElement(ShowsPage,  { onNavigate: navigate }),
+        Merch:    () => React.createElement(MerchPage,  { onNavigate: navigate }),
+        'Book Us':() => React.createElement(BookPage,   { onNavigate: navigate }),
+      };
+
+      const renderPage = pageMap[page] || pageMap.Home;
+
+      return React.createElement(React.Fragment, null,
+        React.createElement(NavComponent, { currentPage: page, onNavigate: navigate }),
+        React.createElement('main', { key: page }, renderPage()),
+        React.createElement(FooterComponent)
+      );
+    };
+
+    ReactDOM.createRoot(document.getElementById('root')).render(React.createElement(App));
+  </script>
+</body>
+</html>

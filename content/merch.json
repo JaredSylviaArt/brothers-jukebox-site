@@ -1,0 +1,28 @@
+{
+  "kicker": "Page 04 ★ The Store ★ Wear the Music",
+  "title": "Merch.",
+  "subhead_prefix": "Shirts, hats, patches, posters. ",
+  "subhead_emphasis": "From the van to the merch table to you.",
+  "featured": {
+    "kicker": "New launch · May MMXXVI",
+    "title_line1": "Tour Tee",
+    "title_line2": "'MMXXVI'",
+    "price": 28,
+    "price_note": "Ships from Central Florida",
+    "description_paragraphs": [
+      "The 2026 tee. Heavyweight cream cotton. Distressed print. Sized to fit the way you actually wear it.",
+      "Printed in small batches. Packed at the kitchen table. Out the door by Friday."
+    ],
+    "image_note": "Tour Tee MMXXVI · Product photo coming",
+    "snipcartId": "tour-tee-mmxxvi",
+    "sizes": ["S", "M", "L", "XL", "2XL"]
+  },
+  "products": [
+    { "name": "Tour Tee 'MMXXVI'", "price": 28, "tag": "NEW", "icon": "★", "desc": "Heavyweight cream cotton. Distressed print.", "cat": "Shirts", "snipcartId": "tour-tee-mmxxvi", "hasSize": true },
+    { "name": "Trucker Hat", "price": 24, "tag": "", "icon": "◈", "desc": "Foam front. Snapback. Compact logo.", "cat": "Hats", "snipcartId": "trucker-hat", "hasSize": false },
+    { "name": "Cowboy Patch", "price": 8, "tag": "", "icon": "⊞", "desc": "Iron-on. 3.5-inch embroidered.", "cat": "Accessories", "snipcartId": "cowboy-patch", "hasSize": false },
+    { "name": "Tour Poster", "price": 18, "tag": "", "icon": "▣", "desc": "18×24. Screen-printed. Signed option.", "cat": "Vinyl & print", "snipcartId": "tour-poster", "hasSize": false },
+    { "name": "Long-Sleeve Tee", "price": 34, "tag": "", "icon": "★", "desc": "Same distressed print. Winter ready.", "cat": "Shirts", "snipcartId": "long-sleeve-tee", "hasSize": true },
+    { "name": "Bandana", "price": 12, "tag": "", "icon": "◇", "desc": "100% cotton. Rust/ink colorway.", "cat": "Accessories", "snipcartId": "bandana", "hasSize": false }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "kicker": "A LIVE COUNTRY BAND ★ CENTRAL FLORIDA ★ SINCE 2025",
+  "title": "BROTHERS JUKEBOX",
+  "subhead_prefix": "The ",
+  "subhead_emphasis": "90s Country",
+  "subhead_suffix": " Sound You've Been Missing",
+  "undertag_line1": "The songs you grew up on. The choruses you forgot you knew. The Friday-night singalongs your crowd already has in muscle memory.",
+  "undertag_line2": "Alan Jackson · George Strait · Garth Brooks · Kenny Chesney.",
+  "proof_stat_prefix": "Regularly drawing ",
+  "proof_stat_emphasis": "400 – 500",
+  "proof_stat_suffix": " fans across Central Florida",
+  "influences": ["ALAN JACKSON", "GEORGE STRAIT", "GARTH BROOKS", "KENNY CHESNEY"],
+  "gallery": [
+    { "image": "images/brownwood.webp", "caption": "Brownwood Paddock · Central Florida", "alt": "Brothers Jukebox live at Brownwood Paddock" },
+    { "image": "images/pic2.webp", "caption": "Live in Central Florida", "alt": "Brothers Jukebox on stage" },
+    { "image": "images/mike.webp", "caption": "Mike Miller · Lead vocals", "alt": "Mike Miller · Lead vocals" }
+  ],
+  "marquee_songs": [
+    "Chattahoochee",
+    "Friends in Low Places",
+    "Amarillo by Morning",
+    "She Thinks My Tractor's Sexy",
+    "The Dance"
+  ],
+  "video_note": "★ Promo video in production · drops summer MMXXVI ★"
+}

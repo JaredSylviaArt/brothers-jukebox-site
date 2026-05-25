@@ -1,0 +1,161 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images"
+public_folder: "/images"
+
+site_url: https://example.netlify.app
+display_url: https://example.netlify.app
+logo_url: /images/logo.webp
+
+collections:
+  - name: pages
+    label: Pages
+    files:
+      # ───────────────────────── HOME ─────────────────────────
+      - name: home
+        label: Home page
+        file: content/home.json
+        format: json
+        fields:
+          - { name: kicker, label: "Top kicker line", widget: string }
+          - { name: title, label: "Big title", widget: string }
+          - { name: subhead_prefix, label: "Subhead — start", widget: string }
+          - { name: subhead_emphasis, label: "Subhead — highlighted word(s)", widget: string }
+          - { name: subhead_suffix, label: "Subhead — end", widget: string }
+          - { name: undertag_line1, label: "Undertag — first line", widget: text }
+          - { name: undertag_line2, label: "Undertag — second line (italic)", widget: string }
+          - { name: proof_stat_prefix, label: "Crowd stat — start", widget: string }
+          - { name: proof_stat_emphasis, label: "Crowd stat — highlighted number", widget: string }
+          - { name: proof_stat_suffix, label: "Crowd stat — end", widget: string }
+          - name: influences
+            label: "Influence names (rotating banner)"
+            widget: list
+            field: { name: name, label: Name, widget: string }
+          - name: gallery
+            label: "Home gallery (3 photos)"
+            widget: list
+            max: 6
+            fields:
+              - { name: image, label: Image, widget: image }
+              - { name: caption, label: Caption, widget: string }
+              - { name: alt, label: "Alt text (for accessibility)", widget: string, required: false }
+          - name: marquee_songs
+            label: "Marquee song list"
+            widget: list
+            field: { name: song, label: Song, widget: string }
+          - { name: video_note, label: "Video section note", widget: string }
+
+      # ───────────────────────── ABOUT ─────────────────────────
+      - name: about
+        label: About page
+        file: content/about.json
+        format: json
+        fields:
+          - { name: kicker, label: "Top kicker line", widget: string }
+          - { name: title, label: "Big title", widget: string }
+          - { name: subhead, label: Subhead, widget: string }
+          - { name: story_heading, label: "Story heading", widget: string }
+          - name: story_paragraphs
+            label: "Story paragraphs"
+            widget: list
+            field: { name: text, label: Paragraph, widget: text }
+          - name: stats
+            label: "Stats list"
+            widget: list
+            fields:
+              - { name: label, label: "Label (bold)", widget: string }
+              - { name: text, label: Text, widget: string }
+          - name: members
+            label: "Band members"
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: role, label: Role, widget: string }
+              - { name: bio, label: Bio, widget: text }
+              - { name: photo, label: Photo, widget: image, required: false }
+          - name: sound_paragraphs
+            label: "Sound paragraphs"
+            widget: list
+            field: { name: text, label: Paragraph, widget: text }
+          - name: influences
+            label: "Influence cards"
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: desc, label: Description, widget: string }
+
+      # ───────────────────────── SHOWS ─────────────────────────
+      - name: shows
+        label: Shows page
+        file: content/shows.json
+        format: json
+        fields:
+          - { name: kicker, label: "Top kicker line", widget: string }
+          - { name: title, label: "Big title", widget: string }
+          - { name: subhead_prefix, label: "Subhead — start", widget: string }
+          - { name: subhead_emphasis, label: "Subhead — highlighted", widget: string }
+          - { name: undertag, label: Undertag, widget: string }
+          - name: shows
+            label: "Show dates (past dates auto-hide from upcoming)"
+            widget: list
+            fields:
+              - { name: date, label: Date, widget: date, format: "YYYY-MM-DD" }
+              - { name: venue, label: Venue, widget: string }
+              - { name: detail, label: "Detail (e.g. 'Main stage')", widget: string, required: false }
+              - { name: time, label: "Show time (e.g. '6:00 PM')", widget: string, required: false }
+              - { name: city, label: City, widget: string, default: "Central FL" }
+              - { name: ticketUrl, label: "Ticket URL (optional)", widget: string, required: false }
+          - name: wishlist
+            label: "Venue wishlist"
+            widget: list
+            fields:
+              - { name: name, label: Venue, widget: string }
+              - { name: desc, label: Description, widget: string }
+          - name: past_performances
+            label: "Past performances (captions)"
+            widget: list
+            field: { name: caption, label: Caption, widget: string }
+
+      # ───────────────────────── MERCH ─────────────────────────
+      - name: merch
+        label: Merch page
+        file: content/merch.json
+        format: json
+        fields:
+          - { name: kicker, label: "Top kicker line", widget: string }
+          - { name: title, label: "Big title", widget: string }
+          - { name: subhead_prefix, label: "Subhead — start", widget: string }
+          - { name: subhead_emphasis, label: "Subhead — highlighted", widget: string }
+          - name: featured
+            label: "Featured product"
+            widget: object
+            fields:
+              - { name: kicker, label: "Mini kicker", widget: string }
+              - { name: title_line1, label: "Title — line 1", widget: string }
+              - { name: title_line2, label: "Title — line 2", widget: string }
+              - { name: price, label: "Price (USD, number only)", widget: number, value_type: int }
+              - { name: price_note, label: "Price note", widget: string }
+              - name: description_paragraphs
+                label: "Description paragraphs"
+                widget: list
+                field: { name: text, label: Paragraph, widget: text }
+              - { name: image_note, label: "Image area note", widget: string }
+              - { name: snipcartId, label: "Snipcart product ID (no spaces)", widget: string }
+              - name: sizes
+                label: "Available sizes"
+                widget: list
+                field: { name: size, label: Size, widget: string }
+          - name: products
+            label: "Merch table products"
+            widget: list
+            fields:
+              - { name: name, label: "Product name", widget: string }
+              - { name: price, label: "Price (USD, number only)", widget: number, value_type: int }
+              - { name: tag, label: "Tag (e.g. NEW — leave blank for none)", widget: string, required: false }
+              - { name: icon, label: "Icon character (★ ◈ ⊞ ▣ ◇)", widget: string }
+              - { name: desc, label: "Short description", widget: string }
+              - { name: cat, label: "Category (Shirts, Hats, Accessories, Vinyl & print)", widget: string }
+              - { name: snipcartId, label: "Snipcart product ID (no spaces)", widget: string }
+              - { name: hasSize, label: "Requires size selection?", widget: boolean, default: false }

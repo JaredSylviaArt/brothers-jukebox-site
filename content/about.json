@@ -1,0 +1,33 @@
+{
+  "kicker": "Page 02 ★ Band Story ★ Central Florida",
+  "title": "Meet the Band.",
+  "subhead": "Five players. One van. A setlist built from the loudest decade country radio ever had.",
+  "story_heading": "Five years of Friday nights",
+  "story_paragraphs": [
+    "Brothers Jukebox started in Central Florida the way every band that lasts starts — friends, a love of country radio's best ten years, and a Friday night that needed filling.",
+    "What grew out of it: a five-piece that knows every word your dad does. And your aunt. And the guy at the back of the room who's never been to a country show in his life."
+  ],
+  "stats": [
+    { "label": "400-500", "text": "Regular crowd at Central Florida venues" },
+    { "label": "Central Florida", "text": "Close to the rooms. Easy to book." },
+    { "label": "90s setlist", "text": "Country radio's biggest decade." },
+    { "label": "Full five-piece", "text": "Road-ready. Plug in and go." },
+    { "label": "Two-set or 90-min", "text": "Built to fit the room." }
+  ],
+  "members": [
+    { "name": "Mike Miller", "role": "Lead vocal, guitar", "bio": "Out front from the first downbeat. Knows every word your grandmother does, too.", "photo": "images/mike.webp" },
+    { "name": "[Member 02]", "role": "[Instrument]", "bio": "One line — what they bring to the floor. The pocket, the hook, the harmony, the engine.", "photo": "" },
+    { "name": "[Member 03]", "role": "[Instrument]", "bio": "The steady one, the loud one, the one who never misses the change.", "photo": "" },
+    { "name": "[Member 04]", "role": "[Instrument]", "bio": "Closer of the encore. Knows the catalog cold.", "photo": "" }
+  ],
+  "sound_paragraphs": [
+    "Country radio. 1990 to 1999.",
+    "Clean hooks. Big choruses. Bar-stage warmth. Songs a room recognizes before the first verse lands."
+  ],
+  "influences": [
+    { "name": "Alan Jackson", "desc": "Classic radio country." },
+    { "name": "George Strait", "desc": "Clean Texas polish." },
+    { "name": "Garth Brooks", "desc": "Arena-sized singalongs." },
+    { "name": "Kenny Chesney", "desc": "Built for a Florida night." }
+  ]
+}

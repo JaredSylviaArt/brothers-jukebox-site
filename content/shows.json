@@ -1,0 +1,28 @@
+{
+  "kicker": "Page 03 ★ Dates ★ Where We're Playing",
+  "title": "See Us Live.",
+  "subhead_prefix": "Central Florida nights. Loud rooms. ",
+  "subhead_emphasis": "Songs you already know.",
+  "undertag": "Find a date. Get there early.",
+  "shows": [
+    { "date": "2026-05-29", "venue": "Lake Sumter Landing", "detail": "Outdoor stage", "time": "5:00 PM", "city": "Central FL", "ticketUrl": "" },
+    { "date": "2026-06-05", "venue": "Fostering Foundation Benefit", "detail": "Fundraiser", "time": "5:30 PM", "city": "Central FL", "ticketUrl": "" },
+    { "date": "2026-06-06", "venue": "Eastport Square", "detail": "Main stage", "time": "6:00 PM", "city": "Central FL", "ticketUrl": "" },
+    { "date": "2026-06-12", "venue": "Lake Sumter Landing", "detail": "Outdoor stage", "time": "5:00 PM", "city": "Central FL", "ticketUrl": "" },
+    { "date": "2026-06-19", "venue": "Brownwood Paddock Square", "detail": "Main stage", "time": "5:30 PM", "city": "Central FL", "ticketUrl": "" },
+    { "date": "2026-07-04", "venue": "Lake Sumter Landing", "detail": "Holiday show", "time": "6:00 PM", "city": "Central FL", "ticketUrl": "" }
+  ],
+  "wishlist": [
+    { "name": "Old Red Orlando", "desc": "The country room we'd most like to call home." },
+    { "name": "Disney Springs", "desc": "The crowd already out looking for the night to land somewhere." },
+    { "name": "Universal Orlando", "desc": "A 90s setlist built for the theme-park floor." }
+  ],
+  "past_performances": [
+    "Lake Sumter Landing · April",
+    "Eastport Square · March",
+    "Brownwood Paddock · February",
+    "Orlando · January",
+    "Eastport Square · December",
+    "Lake Sumter · November"
+  ]
+}
