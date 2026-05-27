@@ -1,0 +1,19 @@
+# Brothers Jukebox — Netlify edge headers
+
+# Always revalidate the entry document and content JSON
+/
+  Cache-Control: public, max-age=0, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+/content/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Revalidate JS/CSS too — small files, fast revalidation, avoids stale-asset bugs
+/*.js
+  Cache-Control: public, max-age=0, must-revalidate
+/*.css
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Images can be cached longer
+/images/*
+  Cache-Control: public, max-age=86400, must-revalidate
