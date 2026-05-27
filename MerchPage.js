@@ -36,9 +36,9 @@ const MerchPage = ({ onNavigate }) => {
     React.createElement('section', { className: 'bj-featured-product' },
       React.createElement('div', { className: 'feat-img' },
         featured.image
-          ? React.createElement('img', { src: featured.image, alt: (featured.title_line1 || '') + ' ' + (featured.title_line2 || ''), style: { width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'relative', zIndex: 1 } })
+          ? React.createElement('img', { src: featured.image, alt: (featured.title_line1 || '') + ' ' + (featured.title_line2 || ''), style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', zIndex: 1 } })
           : React.createElement('div', { className: 'feat-silhouette' }, '★'),
-        featured.image_note && React.createElement('div', { className: 'feat-corner-tag' }, featured.image_note)
+        featured.image_note && React.createElement('div', { className: 'feat-corner-tag', style: { zIndex: 2 } }, featured.image_note)
       ),
       React.createElement('div', { className: 'feat-info' },
         React.createElement('div', { className: 'bj-kicker' }, featured.kicker),
@@ -89,7 +89,7 @@ const MerchPage = ({ onNavigate }) => {
             p.tag && React.createElement('span', { className: 'new-tag' }, p.tag),
             React.createElement('div', { className: 'product-img' },
               p.image
-                ? React.createElement('img', { src: p.image, alt: p.name, style: { width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'relative', zIndex: 1 } })
+                ? React.createElement('img', { src: p.image, alt: p.name, style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block', zIndex: 1 } })
                 : React.createElement('div', { className: 'silhouette' }, p.icon)
             ),
             React.createElement('h4', null, p.name),
