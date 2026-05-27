@@ -270,8 +270,12 @@
     /* ── PHOTO GALLERY ── */
     .bj-gallery {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
+      grid-template-columns: 2fr 1fr;
+      grid-template-rows: 1fr 1fr;
       border-bottom: 1px solid #1a1612;
+    }
+    .bj-gallery .photo.big {
+      grid-row: 1 / span 2;
     }
     .bj-gallery .photo {
       aspect-ratio: 4/3;
@@ -926,7 +930,8 @@
       .bj-proof .stat { font-size: clamp(18px, 5vw, 24px); }
       .bj-proof .infl { font-size: 9px; letter-spacing: 0.14em; }
 
-      .bj-gallery, .bj-gallery.past { grid-template-columns: 1fr; }
+      .bj-gallery, .bj-gallery.past { grid-template-columns: 1fr; grid-template-rows: auto; }
+      .bj-gallery .photo.big { grid-row: auto; }
 
       .bj-section-head {
         flex-direction: column;
