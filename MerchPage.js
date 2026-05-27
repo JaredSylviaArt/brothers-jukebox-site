@@ -35,8 +35,10 @@ const MerchPage = ({ onNavigate }) => {
 
     React.createElement('section', { className: 'bj-featured-product' },
       React.createElement('div', { className: 'feat-img' },
-        React.createElement('div', { className: 'feat-silhouette' }, '★'),
-        React.createElement('div', { className: 'feat-corner-tag' }, featured.image_note || '')
+        featured.image
+          ? React.createElement('img', { src: featured.image, alt: (featured.title_line1 || '') + ' ' + (featured.title_line2 || ''), style: { width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'relative', zIndex: 1 } })
+          : React.createElement('div', { className: 'feat-silhouette' }, '★'),
+        featured.image_note && React.createElement('div', { className: 'feat-corner-tag' }, featured.image_note)
       ),
       React.createElement('div', { className: 'feat-info' },
         React.createElement('div', { className: 'bj-kicker' }, featured.kicker),
@@ -86,7 +88,9 @@ const MerchPage = ({ onNavigate }) => {
           React.createElement('div', { key: i, className: 'teaser-card' },
             p.tag && React.createElement('span', { className: 'new-tag' }, p.tag),
             React.createElement('div', { className: 'product-img' },
-              React.createElement('div', { className: 'silhouette' }, p.icon)
+              p.image
+                ? React.createElement('img', { src: p.image, alt: p.name, style: { width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'relative', zIndex: 1 } })
+                : React.createElement('div', { className: 'silhouette' }, p.icon)
             ),
             React.createElement('h4', null, p.name),
             React.createElement('div', { className: 'price' }, '$' + p.price),

@@ -137,6 +137,7 @@ collections:
               - { name: title_line2, label: "Title — line 2", widget: string }
               - { name: price, label: "Price (USD, number only)", widget: number, value_type: int }
               - { name: price_note, label: "Price note", widget: string }
+              - { name: image, label: "Featured product photo", widget: image, required: false }
               - name: description_paragraphs
                 label: "Description paragraphs"
                 widget: list
@@ -154,7 +155,8 @@ collections:
               - { name: name, label: "Product name", widget: string }
               - { name: price, label: "Price (USD, number only)", widget: number, value_type: int }
               - { name: tag, label: "Tag (e.g. NEW — leave blank for none)", widget: string, required: false }
-              - { name: icon, label: "Icon character (★ ◈ ⊞ ▣ ◇)", widget: string }
+              - { name: image, label: "Product photo", widget: image, required: false }
+              - { name: icon, label: "Icon character (used if no photo) — ★ ◈ ⊞ ▣ ◇", widget: string }
               - { name: desc, label: "Short description", widget: string }
               - { name: cat, label: "Category (Shirts, Hats, Accessories, Vinyl & print)", widget: string }
               - { name: snipcartId, label: "Snipcart product ID (no spaces)", widget: string }

@@ -1,28 +1,29 @@
 {
   "kicker": "Page 04 ★ The Store ★ Wear the Music",
   "title": "Merch.",
-  "subhead_prefix": "Shirts, hats, patches, posters. ",
+  "subhead_prefix": "Shirts, hats, glass, patch. ",
   "subhead_emphasis": "From the van to the merch table to you.",
   "featured": {
-    "kicker": "New launch · May MMXXVI",
+    "kicker": "New launch · Summer MMXXVI",
     "title_line1": "Tour Tee",
     "title_line2": "'MMXXVI'",
     "price": 28,
     "price_note": "Ships from Central Florida",
     "description_paragraphs": [
-      "The 2026 tee. Heavyweight cream cotton. Distressed print. Sized to fit the way you actually wear it.",
-      "Printed in small batches. Packed at the kitchen table. Out the door by Friday."
+      "Black Comfort Colors heavyweight tee. Full jukebox scene — neon lights, desert cacti, open sky. The shirt your crowd remembers you in.",
+      "Printed in small batches. Out the door by Friday."
     ],
-    "image_note": "Tour Tee MMXXVI · Product photo coming",
+    "image": "images/merch-black-tee.png",
+    "image_note": "",
     "snipcartId": "tour-tee-mmxxvi",
     "sizes": ["S", "M", "L", "XL", "2XL"]
   },
   "products": [
-    { "name": "Tour Tee 'MMXXVI'", "price": 28, "tag": "NEW", "icon": "★", "desc": "Heavyweight cream cotton. Distressed print.", "cat": "Shirts", "snipcartId": "tour-tee-mmxxvi", "hasSize": true },
-    { "name": "Trucker Hat", "price": 24, "tag": "", "icon": "◈", "desc": "Foam front. Snapback. Compact logo.", "cat": "Hats", "snipcartId": "trucker-hat", "hasSize": false },
-    { "name": "Cowboy Patch", "price": 8, "tag": "", "icon": "⊞", "desc": "Iron-on. 3.5-inch embroidered.", "cat": "Accessories", "snipcartId": "cowboy-patch", "hasSize": false },
-    { "name": "Tour Poster", "price": 18, "tag": "", "icon": "▣", "desc": "18×24. Screen-printed. Signed option.", "cat": "Vinyl & print", "snipcartId": "tour-poster", "hasSize": false },
-    { "name": "Long-Sleeve Tee", "price": 34, "tag": "", "icon": "★", "desc": "Same distressed print. Winter ready.", "cat": "Shirts", "snipcartId": "long-sleeve-tee", "hasSize": true },
-    { "name": "Bandana", "price": 12, "tag": "", "icon": "◇", "desc": "100% cotton. Rust/ink colorway.", "cat": "Accessories", "snipcartId": "bandana", "hasSize": false }
+    { "name": "Tour Tee 'MMXXVI'", "price": 28, "tag": "NEW", "icon": "★", "image": "images/merch-black-tee.png", "desc": "Black Comfort Colors. Full jukebox scene — neon, cacti, open desert. Heavyweight cotton.", "cat": "Shirts", "snipcartId": "tour-tee-mmxxvi", "hasSize": true },
+    { "name": "Ringer Tee", "price": 28, "tag": "NEW", "icon": "★", "image": "images/merch-ringer-tee.png", "desc": "Cream with black trim. Same jukebox scene. Soft heavyweight cotton.", "cat": "Shirts", "snipcartId": "jukebox-tee-cream", "hasSize": true },
+    { "name": "Long-Sleeve Tee", "price": 38, "tag": "", "icon": "★", "image": "images/merch-longsleeve.png", "desc": "Burnt orange. White distressed Jukebox mark. Built for the cold ones after the show.", "cat": "Shirts", "snipcartId": "long-sleeve-tee", "hasSize": true },
+    { "name": "Trucker Hat", "price": 24, "tag": "", "icon": "◈", "image": "images/merch-hat.png", "desc": "Camo foam front. Snapback. Distressed white Jukebox mark.", "cat": "Hats", "snipcartId": "trucker-hat", "hasSize": false },
+    { "name": "Whiskey Glass", "price": 18, "tag": "", "icon": "◇", "image": "images/merch-glass.png", "desc": "Brothers Jukebox rocks glass. Gothic logo. For the after-show pour.", "cat": "Accessories", "snipcartId": "whiskey-glass", "hasSize": false },
+    { "name": "Embroidered Patch", "price": 8, "tag": "", "icon": "⊞", "image": "images/merch-patch.png", "desc": "3.5-inch roundel. Bucking bronco. Red, gold, white. Iron-on.", "cat": "Accessories", "snipcartId": "cowboy-patch", "hasSize": false }
   ]
 }
