@@ -1009,14 +1009,38 @@
   <div hidden id="snipcart" data-api-key="ZTQyZDExYjItMjZlMC00YmFhLTgzNzktNjFlOGRjNjI1MTkzNjM5MTUxOTEwNDMyOTIyOTMx" data-config-modal-style="side"></div>
   <script async src="https://cdn.snipcart.com/themes/v3.7.3/default/snipcart.js"></script>
 
-  <!-- Hidden product catalog for Snipcart server-side crawler -->
+  <!-- Hidden product catalog for Snipcart server-side crawler.
+       This must match content/merch.json in name, price, and options.
+       If the band edits a product via the CMS, this static catalog needs to be
+       updated too — or alternatively, disable order validation in Snipcart
+       dashboard (Settings → Domains → Order validation = off). -->
   <div id="snipcart-catalog" style="display:none">
     <button
       data-item-id="tour-tee-mmxxvi"
       data-item-name="Tour Tee 'MMXXVI'"
       data-item-price="28"
       data-item-url="/"
-      data-item-description="Heavyweight cream cotton. Distressed print."
+      data-item-description="Black Comfort Colors. Full jukebox scene — neon, cacti, open desert. Heavyweight cotton."
+      data-item-custom1-name="Size"
+      data-item-custom1-options="S|M|L|XL|2XL"
+      data-item-custom1-required="true"
+    ></button>
+    <button
+      data-item-id="jukebox-tee-cream"
+      data-item-name="Ringer Tee"
+      data-item-price="28"
+      data-item-url="/"
+      data-item-description="Cream with black trim. Same jukebox scene. Soft heavyweight cotton."
+      data-item-custom1-name="Size"
+      data-item-custom1-options="S|M|L|XL|2XL"
+      data-item-custom1-required="true"
+    ></button>
+    <button
+      data-item-id="long-sleeve-tee"
+      data-item-name="Long-Sleeve Tee"
+      data-item-price="38"
+      data-item-url="/"
+      data-item-description="Burnt orange. White distressed Jukebox mark. Built for the cold ones after the show."
       data-item-custom1-name="Size"
       data-item-custom1-options="S|M|L|XL|2XL"
       data-item-custom1-required="true"
@@ -1026,38 +1050,21 @@
       data-item-name="Trucker Hat"
       data-item-price="24"
       data-item-url="/"
-      data-item-description="Foam front. Snapback. Compact logo."
+      data-item-description="Camo foam front. Snapback. Distressed white Jukebox mark."
+    ></button>
+    <button
+      data-item-id="whiskey-glass"
+      data-item-name="Whiskey Glass"
+      data-item-price="18"
+      data-item-url="/"
+      data-item-description="Brothers Jukebox rocks glass. Gothic logo. For the after-show pour."
     ></button>
     <button
       data-item-id="cowboy-patch"
-      data-item-name="Cowboy Patch"
+      data-item-name="Embroidered Patch"
       data-item-price="8"
       data-item-url="/"
-      data-item-description="Iron-on. 3.5-inch embroidered."
-    ></button>
-    <button
-      data-item-id="tour-poster"
-      data-item-name="Tour Poster"
-      data-item-price="18"
-      data-item-url="/"
-      data-item-description="18×24. Screen-printed. Signed option."
-    ></button>
-    <button
-      data-item-id="long-sleeve-tee"
-      data-item-name="Long-Sleeve Tee"
-      data-item-price="34"
-      data-item-url="/"
-      data-item-description="Same distressed print. Winter ready."
-      data-item-custom1-name="Size"
-      data-item-custom1-options="S|M|L|XL|2XL"
-      data-item-custom1-required="true"
-    ></button>
-    <button
-      data-item-id="bandana"
-      data-item-name="Bandana"
-      data-item-price="12"
-      data-item-url="/"
-      data-item-description="100% cotton. Rust/ink colorway."
+      data-item-description="3.5-inch roundel. Bucking bronco. Red, gold, white. Iron-on."
     ></button>
   </div>
 
