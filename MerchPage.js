@@ -85,7 +85,12 @@ const MerchPage = ({ onNavigate }) => {
       ),
       React.createElement('div', { className: 'bj-teaser-grid' },
         filtered.map((p, i) =>
-          React.createElement('div', { key: i, className: 'teaser-card' },
+          React.createElement('div', {
+            key: i,
+            className: 'teaser-card',
+            onClick: () => onNavigate('Product', p.snipcartId),
+            style: { cursor: 'pointer' }
+          },
             p.tag && React.createElement('span', { className: 'new-tag' }, p.tag),
             React.createElement('div', { className: 'product-img' },
               p.image
@@ -95,29 +100,10 @@ const MerchPage = ({ onNavigate }) => {
             React.createElement('h4', null, p.name),
             React.createElement('div', { className: 'price' }, '$' + p.price),
             React.createElement('div', { className: 'prod-desc' }, p.desc),
-            p.hasSize
-              ? React.createElement('button', {
-                  className: 'btn-add-card bj-btn',
-                  onClick: () => {
-                    if (!window.Snipcart) return;
-                    window.Snipcart.api.cart.items.add({
-                      id: p.snipcartId,
-                      name: p.name,
-                      price: p.price,
-                      url: '/',
-                      description: p.desc,
-                      customFields: [{ name: 'Size', value: 'M', required: true, options: 'S|M|L|XL|2XL' }]
-                    });
-                  }
-                }, 'Add to Table')
-              : React.createElement('button', {
-                  className: 'btn-add-card bj-btn snipcart-add-item',
-                  'data-item-id': p.snipcartId,
-                  'data-item-name': p.name,
-                  'data-item-price': p.price,
-                  'data-item-url': '/',
-                  'data-item-description': p.desc
-                }, 'Add to Table')
+            React.createElement('button', {
+              className: 'btn-add-card bj-btn',
+              onClick: e => { e.stopPropagation(); onNavigate('Product', p.snipcartId); }
+            }, 'View →')
           )
         )
       )

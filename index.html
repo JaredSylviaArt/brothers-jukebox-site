@@ -1073,37 +1073,62 @@
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 
-  <script src="utils.js?v=2"></script>
-  <script src="Nav.js?v=2"></script>
-  <script src="Footer.js?v=2"></script>
-  <script src="HomePage.js?v=2"></script>
-  <script src="AboutPage.js?v=2"></script>
-  <script src="ShowsPage.js?v=2"></script>
-  <script src="MerchPage.js?v=2"></script>
-  <script src="BookPage.js?v=2"></script>
+  <script src="utils.js?v=3"></script>
+  <script src="Nav.js?v=3"></script>
+  <script src="Footer.js?v=3"></script>
+  <script src="HomePage.js?v=3"></script>
+  <script src="AboutPage.js?v=3"></script>
+  <script src="ShowsPage.js?v=3"></script>
+  <script src="MerchPage.js?v=3"></script>
+  <script src="ProductPage.js?v=3"></script>
+  <script src="BookPage.js?v=3"></script>
 
   <script>
-    const App = () => {
-      const [page, setPage] = React.useState('Home');
+    const NAV_PATHS = { Home: '/', About: '/about', Shows: '/shows', Merch: '/merch', 'Book Us': '/book' };
+    const PATH_TO_PAGE = Object.fromEntries(Object.entries(NAV_PATHS).map(([k, v]) => [v, k]));
 
-      const navigate = (dest) => {
-        setPage(dest);
+    const parseRoute = () => {
+      const path = window.location.pathname;
+      const m = path.match(/^\/product\/([^/]+)/);
+      if (m) return { page: 'Product', productId: m[1] };
+      return { page: PATH_TO_PAGE[path] || 'Home', productId: null };
+    };
+
+    const App = () => {
+      const [route, setRoute] = React.useState(parseRoute);
+
+      const navigate = (dest, productId) => {
+        let path;
+        if (dest === 'Product') path = '/product/' + productId;
+        else path = NAV_PATHS[dest] || '/';
+        if (window.location.pathname !== path) {
+          window.history.pushState({ page: dest, productId }, '', path);
+        }
+        setRoute({ page: dest, productId: productId || null });
         window.scrollTo({ top: 0, behavior: 'instant' });
       };
 
+      React.useEffect(() => {
+        const onPop = () => setRoute(parseRoute());
+        window.addEventListener('popstate', onPop);
+        return () => window.removeEventListener('popstate', onPop);
+      }, []);
+
       const pageMap = {
-        Home:     () => React.createElement(HomePage,  { onNavigate: navigate }),
-        About:    () => React.createElement(AboutPage,  { onNavigate: navigate }),
-        Shows:    () => React.createElement(ShowsPage,  { onNavigate: navigate }),
-        Merch:    () => React.createElement(MerchPage,  { onNavigate: navigate }),
-        'Book Us':() => React.createElement(BookPage,   { onNavigate: navigate }),
+        Home:     () => React.createElement(HomePage,    { onNavigate: navigate }),
+        About:    () => React.createElement(AboutPage,   { onNavigate: navigate }),
+        Shows:    () => React.createElement(ShowsPage,   { onNavigate: navigate }),
+        Merch:    () => React.createElement(MerchPage,   { onNavigate: navigate }),
+        'Book Us':() => React.createElement(BookPage,    { onNavigate: navigate }),
+        Product:  () => React.createElement(ProductPage, { onNavigate: navigate, productId: route.productId }),
       };
 
-      const renderPage = pageMap[page] || pageMap.Home;
+      const renderPage = pageMap[route.page] || pageMap.Home;
+      const navHighlight = route.page === 'Product' ? 'Merch' : route.page;
 
       return React.createElement(React.Fragment, null,
-        React.createElement(NavComponent, { currentPage: page, onNavigate: navigate }),
-        React.createElement('main', { key: page }, renderPage()),
+        React.createElement(NavComponent, { currentPage: navHighlight, onNavigate: navigate }),
+        React.createElement('main', { key: route.page + (route.productId || '') }, renderPage()),
         React.createElement(FooterComponent)
       );
     };

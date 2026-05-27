@@ -155,9 +155,22 @@ collections:
               - { name: name, label: "Product name", widget: string }
               - { name: price, label: "Price (USD, number only)", widget: number, value_type: int }
               - { name: tag, label: "Tag (e.g. NEW — leave blank for none)", widget: string, required: false }
-              - { name: image, label: "Product photo", widget: image, required: false }
+              - { name: image, label: "Main product photo (shown on the merch grid)", widget: image, required: false }
+              - name: gallery
+                label: "Photo gallery (shown on the product detail page)"
+                widget: list
+                required: false
+                summary: "Photo"
+                field: { name: photo, label: Photo, widget: image }
               - { name: icon, label: "Icon character (used if no photo) — ★ ◈ ⊞ ▣ ◇", widget: string }
-              - { name: desc, label: "Short description", widget: string }
+              - { name: desc, label: "Short description (one line — shown on grid)", widget: string }
+              - { name: long_description, label: "Full description (shown on product page — supports **bold** and blank-line paragraphs)", widget: text, required: false }
+              - { name: testimonial, label: "Customer testimonial (optional — shown as a quote)", widget: string, required: false }
+              - name: related
+                label: "Related products (Snipcart IDs of other products — shown at bottom)"
+                widget: list
+                required: false
+                field: { name: id, label: "Snipcart ID", widget: string }
               - { name: cat, label: "Category (Shirts, Hats, Accessories, Vinyl & print)", widget: string }
               - { name: snipcartId, label: "Snipcart product ID (no spaces)", widget: string }
               - { name: hasSize, label: "Requires size selection?", widget: boolean, default: false }
