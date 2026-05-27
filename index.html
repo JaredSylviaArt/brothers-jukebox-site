@@ -863,6 +863,137 @@
       transition: all 0.2s ease;
     }
     .btn-add-card:hover { background: #1a1612; color: #e8dfc9; }
+
+    /* ──────────── RESPONSIVE — TABLET ──────────── */
+    @media (max-width: 960px) {
+      .bj-nav { padding: 14px 24px; }
+      .bj-nav ul { gap: 18px; }
+      .bj-nav a { font-size: 11px; letter-spacing: 0.14em; }
+      .bj-hero, .bj-proof, .bj-merch-teaser, .bj-merch-section, .bj-video-section, .bj-form-section, .bj-shows-list { padding-left: 24px; padding-right: 24px; }
+      .bj-section-head { padding: 24px; }
+      .bj-section-head .num { font-size: 40px; }
+      .bj-gallery { grid-template-columns: 1fr 1fr; }
+      .bj-gallery.past { grid-template-columns: repeat(2, 1fr); }
+      .bj-story { grid-template-columns: 1fr; gap: 28px; padding: 32px 24px; }
+      .members-grid { grid-template-columns: repeat(2, 1fr); }
+      .sound-inner { grid-template-columns: 1fr; gap: 24px; padding: 24px; }
+      .influence-grid { grid-template-columns: 1fr 1fr; }
+      .bj-featured-product { grid-template-columns: 1fr; }
+      .feat-img { border-right: none; border-bottom: 1px solid #1a1612; min-height: 320px; }
+      .feat-info { padding: 28px; }
+      .creds-grid { grid-template-columns: 1fr 1fr; margin: 0 24px 32px; }
+      .form-layout { grid-template-columns: 1fr; gap: 24px; }
+      .bj-foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .bj-foot-inner { padding: 32px 24px; }
+      .bj-mailing { padding: 48px 24px; }
+    }
+
+    /* ──────────── RESPONSIVE — MOBILE ──────────── */
+    @media (max-width: 640px) {
+      .bj-ticker { font-size: 9px; letter-spacing: 0.18em; padding: 6px 0; }
+      .bj-nav {
+        flex-wrap: wrap;
+        padding: 12px 16px;
+        gap: 8px;
+        top: 28px;
+      }
+      .bj-nav > a { order: 1; flex: 1; }
+      .bj-nav .bj-socials { order: 2; }
+      .bj-nav .bj-nav-cart { order: 3; margin-left: 0; }
+      .bj-nav ul {
+        order: 4;
+        width: 100%;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-top: 6px;
+        border-top: 1px solid #1a1612;
+        margin-top: 6px;
+      }
+      .bj-nav a { font-size: 10px; letter-spacing: 0.12em; }
+      .bj-logo { height: 36px; }
+      .bj-socials a, .bj-nav-cart { font-size: 10px; }
+
+      .bj-hero { padding: 36px 16px 32px; }
+      .bj-hero .stamp { display: none; }
+      .bj-kicker { font-size: 9px; letter-spacing: 0.22em; }
+      h1 { font-size: clamp(40px, 13vw, 80px); }
+      .bj-undertag { font-size: 13px; }
+      .bj-hero-ctas { gap: 8px; }
+      .bj-btn { padding: 10px 16px; font-size: 12px; letter-spacing: 0.14em; }
+
+      .bj-proof { padding: 32px 16px; }
+      .bj-proof .stat { font-size: clamp(18px, 5vw, 24px); }
+      .bj-proof .infl { font-size: 9px; letter-spacing: 0.14em; }
+
+      .bj-gallery, .bj-gallery.past { grid-template-columns: 1fr; }
+
+      .bj-section-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 24px 16px 20px;
+      }
+      .bj-section-head .num { font-size: 32px; }
+      .bj-section-head h2 { font-size: clamp(26px, 7vw, 36px); }
+      .bj-section-head .meta { text-align: left; font-size: 9px; }
+
+      .bj-shows-list { padding: 0 16px 32px; }
+      .show-row {
+        grid-template-columns: 32px 1fr;
+        grid-template-rows: auto auto auto;
+        row-gap: 6px;
+        column-gap: 12px;
+        padding: 14px 0;
+      }
+      .show-row .idx { grid-row: 1; align-self: start; }
+      .show-row .date {
+        grid-column: 2;
+        grid-row: 1;
+        font-size: 18px;
+      }
+      .show-row .date small { display: inline; margin-right: 8px; }
+      .show-row > div:nth-child(3) { grid-column: 1 / -1; grid-row: 2; }
+      .show-row .venue { font-size: 14px; }
+      .show-row .ticket { grid-column: 1 / -1; grid-row: 3; }
+      .show-row .ticket a { display: inline-block; }
+
+      .bj-merch-teaser, .bj-merch-section { padding: 24px 16px 32px; }
+      .bj-teaser-grid { grid-template-columns: 1fr; }
+      .teaser-card { padding: 14px; }
+
+      .feat-info { padding: 24px 16px; }
+      .feat-img { min-height: 260px; }
+      .feat-info h2 { font-size: clamp(24px, 7vw, 36px); }
+
+      .bj-marquee { padding: 10px 0; }
+      .bj-marquee-track span { font-size: 12px; padding: 0 14px; }
+
+      .bj-video-section { padding: 32px 16px; }
+      .bj-video-frame { min-height: 200px; }
+
+      .bj-story { padding: 28px 16px; }
+      .members-grid { grid-template-columns: 1fr; }
+      .member-card { padding: 18px; }
+      .sound-inner { padding: 24px 16px; }
+      .influence-grid { grid-template-columns: 1fr; }
+
+      .venue-wishlist { grid-template-columns: 1fr; }
+
+      .creds-grid { grid-template-columns: 1fr; margin: 0 16px 28px; }
+
+      .bj-form-section { padding: 0 16px 32px; }
+      .form-row-2 { grid-template-columns: 1fr; }
+
+      .bj-mailing { padding: 40px 16px; }
+      .bj-mailing form { flex-direction: column; gap: 8px; }
+      .bj-mailing input { width: 100%; }
+      .bj-mailing button { width: 100%; }
+
+      .bj-foot-inner { padding: 28px 16px; }
+      .bj-foot-grid { grid-template-columns: 1fr; gap: 24px; padding-bottom: 24px; }
+      .bj-foot-bot { flex-direction: column; gap: 8px; text-align: center; }
+    }
   </style>
 </head>
 <body>
