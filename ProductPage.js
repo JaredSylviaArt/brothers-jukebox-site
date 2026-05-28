@@ -68,6 +68,13 @@ const ProductPage = ({ productId, onNavigate }) => {
     if (product.hasSize) {
       item.customFields = [{ name: 'Size', value: selectedSize, required: true, options: 'S|M|L|XL|2XL' }];
     }
+    // Resolve Printful variant ID for fulfillment routing
+    const printfulVariantId = product.hasSize
+      ? (product.printfulVariants && product.printfulVariants[selectedSize])
+      : product.printfulVariantId;
+    if (printfulVariantId) {
+      item.metadata = { printful_variant_id: printfulVariantId };
+    }
     window.Snipcart.api.cart.items.add(item);
   };
 

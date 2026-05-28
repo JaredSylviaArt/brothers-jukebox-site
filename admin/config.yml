@@ -174,3 +174,18 @@ collections:
               - { name: cat, label: "Category (Shirts, Hats, Accessories, Vinyl & print)", widget: string }
               - { name: snipcartId, label: "Snipcart product ID (no spaces)", widget: string }
               - { name: hasSize, label: "Requires size selection?", widget: boolean, default: false }
+              - { name: printfulVariantId, label: "Printful variant ID (no-size items only)", widget: string, required: false, hint: "From Printful → product → variant page. Leave blank if this product has sizes." }
+              - name: printfulVariants
+                label: "Printful variant IDs per size (sized items only)"
+                widget: object
+                required: false
+                collapsed: true
+                hint: "From Printful → product → variants. One ID per size. Leave blank if this product is one-size."
+                fields:
+                  - { name: "S",   label: "S",   widget: string, required: false }
+                  - { name: "M",   label: "M",   widget: string, required: false }
+                  - { name: "L",   label: "L",   widget: string, required: false }
+                  - { name: "XL",  label: "XL",  widget: string, required: false }
+                  - { name: "2XL", label: "2XL", widget: string, required: false }
+                  - { name: "3XL", label: "3XL", widget: string, required: false }
+                  - { name: "4XL", label: "4XL", widget: string, required: false }

@@ -32,7 +32,16 @@
       "related": ["jukebox-tee-cream", "long-sleeve-tee", "trucker-hat"],
       "cat": "Shirts",
       "snipcartId": "tour-tee-mmxxvi",
-      "hasSize": true
+      "hasSize": true,
+      "printfulVariants": {
+        "S":   "6a158e8eccfd97",
+        "M":   "6a158e8eccfdf4",
+        "L":   "6a158e8eccfe45",
+        "XL":  "6a158e8eccfe93",
+        "2XL": "6a158e8eccfee9",
+        "3XL": "6a158e8eccff35",
+        "4XL": "6a158e8eccff88"
+      }
     },
     {
       "name": "Ringer Tee",
@@ -47,7 +56,15 @@
       "related": ["tour-tee-mmxxvi", "long-sleeve-tee", "cowboy-patch"],
       "cat": "Shirts",
       "snipcartId": "jukebox-tee-cream",
-      "hasSize": true
+      "hasSize": true,
+      "printfulVariants": {
+        "S":   "6a15d2d55e0b62",
+        "M":   "6a15d2d55e0c15",
+        "L":   "6a15d2d55e0ca2",
+        "XL":  "6a15d2d55e0d34",
+        "2XL": "6a15d2d55e0da1",
+        "3XL": "6a15d2d55e0e24"
+      }
     },
     {
       "name": "Long-Sleeve Tee",
@@ -62,7 +79,15 @@
       "related": ["tour-tee-mmxxvi", "jukebox-tee-cream", "trucker-hat"],
       "cat": "Shirts",
       "snipcartId": "long-sleeve-tee",
-      "hasSize": true
+      "hasSize": true,
+      "printfulVariants": {
+        "S":   "6a15b968e74ce6",
+        "M":   "6a15b968e74d46",
+        "L":   "6a15b968e74d96",
+        "XL":  "6a15b968e74de6",
+        "2XL": "6a15b968e74e21",
+        "3XL": "6a15b968e74e71"
+      }
     },
     {
       "name": "Trucker Hat",
@@ -77,7 +102,8 @@
       "related": ["tour-tee-mmxxvi", "whiskey-glass", "cowboy-patch"],
       "cat": "Hats",
       "snipcartId": "trucker-hat",
-      "hasSize": false
+      "hasSize": false,
+      "printfulVariantId": "6a15c1cfbafd03"
     },
     {
       "name": "Whiskey Glass",
@@ -92,7 +118,8 @@
       "related": ["trucker-hat", "tour-tee-mmxxvi", "cowboy-patch"],
       "cat": "Accessories",
       "snipcartId": "whiskey-glass",
-      "hasSize": false
+      "hasSize": false,
+      "printfulVariantId": "6a15bf1b25f123"
     },
     {
       "name": "Embroidered Patch",
@@ -107,7 +134,8 @@
       "related": ["trucker-hat", "tour-tee-mmxxvi", "whiskey-glass"],
       "cat": "Accessories",
       "snipcartId": "cowboy-patch",
-      "hasSize": false
+      "hasSize": false,
+      "printfulVariantId": "6a1619aa739dd8"
     }
   ]
 }

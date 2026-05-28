@@ -13,14 +13,21 @@ const MerchPage = ({ onNavigate }) => {
 
   const addFeaturedToCart = () => {
     if (!window.Snipcart) return;
-    window.Snipcart.api.cart.items.add({
+    // Look up the matching product so we can grab its Printful variant ID
+    const featuredProduct = products.find(p => p.snipcartId === featured.snipcartId);
+    const item = {
       id: featured.snipcartId,
       name: (featured.title_line1 || '') + ' ' + (featured.title_line2 || ''),
       price: featured.price,
       url: '/',
       description: (featured.description_paragraphs || [''])[0],
       customFields: [{ name: 'Size', value: selectedSize, required: true, options: (featured.sizes || ['S','M','L','XL','2XL']).join('|') }]
-    });
+    };
+    const printfulVariantId = featuredProduct && featuredProduct.printfulVariants && featuredProduct.printfulVariants[selectedSize];
+    if (printfulVariantId) {
+      item.metadata = { printful_variant_id: printfulVariantId };
+    }
+    window.Snipcart.api.cart.items.add(item);
   };
 
   return React.createElement('div', null,
