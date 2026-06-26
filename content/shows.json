@@ -8,10 +8,15 @@
     {
       "date": "2026-07-04",
       "venue": "Lake Sumter Landing",
-      "detail": "Holiday show",
-      "time": "6:00 PM",
+      "detail": "America 250 Celebration",
+      "time": "7:00 PM",
       "city": "Central FL",
       "ticketUrl": ""
+    },
+    {
+      "city": "Central FL",
+      "venue": "Brownwood Paddock Square",
+      "time": "6:00 PM"
     }
   ],
   "wishlist": [
