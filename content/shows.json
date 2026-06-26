@@ -6,6 +6,12 @@
   "undertag": "Find a date. Get there early.",
   "shows": [
     {
+      "city": "Central FL",
+      "venue": "Brownwood Paddock Square",
+      "time": "6:00 PM",
+      "date": "2026-06-26"
+    },
+    {
       "date": "2026-07-04",
       "venue": "Lake Sumter Landing",
       "detail": "America 250 Celebration",
@@ -15,9 +21,22 @@
     },
     {
       "city": "Central FL",
+      "date": "2026-07-10",
       "venue": "Brownwood Paddock Square",
-      "time": "6:00 PM",
-      "date": "2026-06-26"
+      "time": "6:00 PM"
+    },
+    {
+      "city": "Central FL",
+      "date": "2026-07-31",
+      "venue": "Sawgrass Grove",
+      "detail": "Mikes 40th Birthday Celebration",
+      "time": "6:00 PM"
+    },
+    {
+      "city": "Central FL",
+      "date": "2026-08-14",
+      "venue": "Eastport",
+      "time": "6:00 PM"
     }
   ],
   "wishlist": [
